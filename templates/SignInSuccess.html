@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Copy Pasta</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/">Copy Pasta</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="/DemoPage">Demo</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a id="username" th:text="${username}"></a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-6" style="background-color:lavender;">
+      <h2>Enter a word to add to your collection.</h2>
+      <input type="text" id='wordToAdd' value=''>
+      <input type="submit" value="Add" onclick="addToList()">
+      <p id='listHeader'></p>
+      <span id='list'>
+      </span>
+    </div>
+    <div class="col-sm-6" style="background-color:lavenderblush;">
+      <h2>Your Copy Collection</h2>
+      <br>
+      <textarea id="collection" rows="8" cols="100">
+      </textarea>
+      <input type="submit" value="Copy" onclick='copy()'>
+      <input type="submit" value="Reset" onclick='reset()'>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="/PersonalPageJavaScript.js"></script>
+<script th:inline="javascript">
+  [# th:each="word : ${wordList}"]    
+    addToListTwo([[${word}]]);
+  [/]
+</script>
+</body>
+</html>
